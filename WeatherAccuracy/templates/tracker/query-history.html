@@ -1,0 +1,25 @@
+{% extends "navbar.html" %}
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><span class="octicon octicon-list-ordered"></span></th>
+      <th><span class="octicon octicon-location"></span> City</th>
+      <th><span class="octicon octicon-file-code"></span> Query String</th>
+      <th><span class="octicon octicon-hourglass"></span> Time Executed</th>
+      <th><span class="octicon octicon-database"></span> Type</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for query in queries %}
+  	<tr>
+  		<td>{{ query.pk }}</td>
+  		<td>{{ query.city.name }}</td>
+  		<td><code>{{ query.full_query_string }}</code></td>
+  		<td>{{ query.time_executed }}</td>
+  		<td>{{ query.query_type }}</td>
+ 	</tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

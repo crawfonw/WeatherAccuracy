@@ -13,3 +13,10 @@ def latest_query(city_pk):
     if q.count():
         return q[0]
     return None
+
+@register.simple_tag
+def active(request, pattern):
+    path = request.path
+    if path == pattern:
+        return 'active'
+    return ''
