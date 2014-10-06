@@ -1,2 +1,10 @@
 
 WeatherAccuracy/WeatherAccuracy/settings.py
+
+.project
+
+.pydevproject
+
+WeatherAccuracy/db.sqlite3
+
+*.pyc

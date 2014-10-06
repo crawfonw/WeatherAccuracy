@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load tracker_extras %}
+
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><span class="octicon octicon-list-ordered"></span></th>
+      <th><span class="octicon octicon-location"></span> City</th>
+      <th><span class="octicon octicon-file-code"></span> Query String</th>
+      <th><span class="octicon octicon-file-code"></span> Last Query</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for city in cities %}
+  	<tr>
+  		<td>{{ city.pk }}</td>
+  		<td>{{ city.name }}</td>
+  		<td><code>{{ city.query_string }}</code></td>
+  		{% latest_query city.pk as q %}
+  		<td>{% if q %}<a href="{% url 'query-lookup' q.pk %}">{{ q }}</a>{% else %}N/A{% endif %} | <a href="{% url 'new-weather-query' city.pk %}"><button type="button" class="btn btn-xs btn-primary">New Query</button></a></td>
+ 	</tr>
+  {% endfor %}
+  </tbody>
+</table>
+<ul>
+	{% for key, value in data.items %}
+   	<li>
+   		{{ key }}: {{ value }}
+   	</li>
+	{% endfor %}
+</ul>
+{% endblock %}
