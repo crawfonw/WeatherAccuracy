@@ -16,7 +16,7 @@
   		<td>{{ query.pk }}</td>
   		<td>{{ query.city.name }}</td>
   		<td><code>{{ query.full_query_string }}</code></td>
-  		<td>{{ query.time_executed }}</td>
+  		<td><a href="{% url 'query-lookup' query.pk %}">{{ query.time_executed }}</a></td>
   		<td>{{ query.query_type }}</td>
  	</tr>
   {% endfor %}
