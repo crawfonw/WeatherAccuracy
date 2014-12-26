@@ -1,5 +1,5 @@
 """
-WSGI config for WeatherAccuracy project.
+WSGI config for nwc project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -7,8 +7,14 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
-import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "WeatherAccuracy.settings")
+import os, sys
+
+path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
+if path not in sys.path: 
+    sys.path.append(path)
+
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nwc.settings")
+os.environ["DJANGO_SETTINGS_MODULE"] = "nwc.settings"
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

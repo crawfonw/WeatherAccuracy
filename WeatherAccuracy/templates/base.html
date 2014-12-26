@@ -16,6 +16,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ STATIC_URL }}bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}bootstrap-3.2.0-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap-3.2.0-dist/css/sticky-footer-navbar.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ STATIC_URL }}bootstrap-3.2.0-dist/css/starter-template.css" rel="stylesheet">
@@ -36,13 +37,15 @@
   	{% endblock %}
     
     {% if page_header or page_lead %}
-    <div class="starter-template">
-    	{% if page_header %}
-  		<h1>{{ page_header }}</h1>
-  		{% endif %}
-  		{% if page_lead %}
-  		<p class="lead">{{ page_lead }}</p>
-  		{% endif %}
+    <div class="container">
+    	<div class="page-header">
+	    	{% if page_header %}
+	  		<h1>{{ page_header }}</h1>
+	  		{% endif %}
+	  		{% if page_lead %}
+	  		<p class="lead">{{ page_lead }}</p>
+	  		{% endif %}
+  		</div>
 	</div>
 	{% endif %}
     
@@ -62,7 +65,11 @@
 	{% endblock %}
 	
 	</div><!-- /.container -->
-
+	<footer class="footer">
+    	<div class="container">
+			<p class="text-muted">© {{ COPYRIGHT_YEARS }} <a href="http://nickwcrawford.com" target=_blank>Nick Crawford</a></p>
+		</div>
+    </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

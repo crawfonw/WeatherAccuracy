@@ -1,7 +1,7 @@
 from datetime import datetime
 
-def project_context_processor(request):
+def copyright(request):
     
     return {
-            
+            'COPYRIGHT_YEARS': '2014-%s' % datetime.now().year,
             }
