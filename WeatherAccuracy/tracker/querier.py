@@ -1,8 +1,8 @@
 import urllib2, urllib, json
 
-CURRENT_WEATHER = 'http://api.openweathermap.org/data/2.5/weather?q=%s&units=metric'
-HOURLY_FORECAST = 'http://api.openweathermap.org/data/2.5/forecast?q=%s&units=metric' #every 3 hours for 5 days ahead
-SIXTEEN_DAY_FORECAST = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=%s&units=metric&cnt=16' #daily up to 16 days in the future
+CURRENT_WEATHER = 'http://api.openweathermap.org/data/2.5/weather?id=%s&units=metric'
+HOURLY_FORECAST = 'http://api.openweathermap.org/data/2.5/forecast?id=%s&units=metric' #every 3 hours for 5 days ahead
+SIXTEEN_DAY_FORECAST = 'http://api.openweathermap.org/data/2.5/forecast/daily?id=%s&units=metric&cnt=16' #daily up to 16 days in the future
 
 def _query_api(url, city):
     query_url = url % city

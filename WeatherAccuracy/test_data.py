@@ -9,7 +9,7 @@ def purge_and_create_site_and_auth():
 
     site = Site()
     site.id = 1
-    site.domain = 'http://www.rose-hulman.edu'
+    site.domain = 'http://weather.presidentnick.com'
     site.name = 'WeatherAccuracy'
     site.save()
 
@@ -39,8 +39,13 @@ def run(purge):
     
 def create_cities():
     from tracker.models import City
-    City.objects.create(name='London, England; UK', query_string='london,uk')
-    City.objects.create(name='Louisville, KY; USA', query_string='louisville,ky')
+    City.objects.create(name='Auckland, NZ', city_id=2193733)
+    City.objects.create(name='Cairo, EG', city_id=360630)
+    City.objects.create(name='Kyoto, JP', city_id=1857910)
+    City.objects.create(name='Lima, PE', city_id=3936456)
+    City.objects.create(name='London, England; UK', city_id=2643743)
+    City.objects.create(name='Louisville, KY; USA', city_id=4299276)
+    City.objects.create(name='San Francisco, CA; USA', city_id=5391959)
 
 if __name__ == '__main__':
     import argparse, os
