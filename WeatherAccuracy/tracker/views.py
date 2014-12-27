@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect, StreamingHttpResponse
+from django.http import HttpResponseRedirect, StreamingHttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils import timezone
@@ -43,7 +43,8 @@ def display_query(request, query_id):
 def query_city_current_weather(request, city_id):
     c = get_object_or_404(City, pk=city_id)
     q_string, data = current_weather_for(c.city_id)
-    q = Query.objects.create(city=c, time_executed=timezone.now(), full_query_string=q_string, raw_results=data, query_type='Current')
+    q = Query.objects.create(city=c, time_executed=timezone.now(), full_query_string=q_string, \
+                             raw_results=data, query_type='C',)
     if data:
         q.was_success = True
         messages.success(request, 'Hooray! - %s (%s) successfully retrieved.' % (q, q.query_type))
@@ -51,5 +52,5 @@ def query_city_current_weather(request, city_id):
         q.was_success = False
         messages.error(request, 'Oh noes! There was a problem querying %s (qs=%s).' % (c, q_string))
     q.save()
-    return HttpResponseRedirect(reverse(index))
+    return HttpResponseRedirect(reverse(latest_query))
     

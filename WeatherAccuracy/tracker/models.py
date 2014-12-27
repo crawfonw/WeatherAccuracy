@@ -31,4 +31,5 @@ class Query(models.Model):
         verbose_name_plural = 'Queries'
     
     def __unicode__(self):
-        return unicode(unicode(self.city) + ' at ' + unicode(self.time_executed))
+        return unicode('%s at %s (%s)' % (unicode(self.city), unicode(self.time_executed), \
+                                          dict(self.QUERY_TYPES).get(self.query_type)))

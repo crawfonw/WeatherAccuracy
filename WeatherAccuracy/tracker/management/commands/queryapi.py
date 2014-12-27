@@ -2,7 +2,8 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 
 from tracker.models import City, Query
-from tracker.querier import current_weather_for, five_day_weather_for, sixteen_day_weather_for
+from tracker.querier import current_weather_for, five_day_weather_for, \
+                            sixteen_day_weather_for
 
 query_func_map = {'C': current_weather_for,
                   'D': sixteen_day_weather_for,
@@ -27,12 +28,13 @@ class Command(BaseCommand):
             if opt in dict(Query.QUERY_TYPES).keys():
                 for c in cities:
                     q_string, data = query_func_map[opt](c.city_id)
-                    q = Query.objects.create(city=c, time_executed=timezone.now(), full_query_string=q_string, query_type=opt)
+                    q = Query.objects.create(city=c, time_executed=timezone.now(), \
+                                             full_query_string=q_string, query_type=opt,)
                     if data:
                         q.was_successful = True
-                        raw_results = data
+                        q.raw_results = data
                     else:
                         q.was_successful = False
-                        raw_results = 'fail'
+                        q.raw_results = ''
                     q.save()
         self.stdout.write('Ran queries command')
