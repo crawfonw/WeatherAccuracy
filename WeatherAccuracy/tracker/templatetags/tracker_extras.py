@@ -17,6 +17,9 @@ def latest_query(city_pk):
 @register.simple_tag
 def active(request, pattern):
     path = request.path
-    if path == pattern:
+    if pattern == '/':
+        if pattern == path:
+            return 'active'
+    elif pattern in path:
         return 'active'
     return ''

@@ -1,9 +1,7 @@
 from django.contrib import admin
-from models import City, Query
 
-class FengShuiAdmin(admin.ModelAdmin):
-    actions_on_bottom = True
-    list_per_page = 50
+from WeatherAccuracy.shared_admin import FengShuiAdmin
+from models import City, Query
     
 class CityAdmin(FengShuiAdmin):
     list_display = ('name', 'city_id',)

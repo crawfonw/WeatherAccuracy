@@ -36,8 +36,8 @@
   	{% block navigation %}
   	{% endblock %}
     
-    {% if page_header or page_lead %}
     <div class="container">
+    {% if page_header or page_lead %}
     	<div class="page-header">
 	    	{% if page_header %}
 	  		<h1>{{ page_header }}</h1>
@@ -46,10 +46,7 @@
 	  		<p class="lead">{{ page_lead }}</p>
 	  		{% endif %}
   		</div>
-	</div>
 	{% endif %}
-    
-    <div class="container">
     {% if messages %}
 		{% for message in messages %}
 			{% if message.tags %}
@@ -63,8 +60,8 @@
 	{% endif %}
 	{% block content %}
 	{% endblock %}
-	
 	</div><!-- /.container -->
+	
 	<footer class="footer">
     	<div class="container">
 			<p class="text-muted">© {{ COPYRIGHT_YEARS }} <a href="http://nickwcrawford.com" target=_blank>Nick Crawford</a></p>

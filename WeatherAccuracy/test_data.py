@@ -2,16 +2,16 @@
 import os
 
 def purge_and_create_site_and_auth():
-    from django.contrib.sites.models import Site
+    #from django.contrib.sites.models import Site
     from django.conf import settings
 
-    Site.objects.all().delete()
-
-    site = Site()
-    site.id = 1
-    site.domain = 'http://weather.presidentnick.com'
-    site.name = 'WeatherAccuracy'
-    site.save()
+#     Site.objects.all().delete()
+# 
+#     site = Site()
+#     site.id = 1
+#     site.domain = 'http://weather.presidentnick.com'
+#     site.name = 'WeatherAccuracy'
+#     site.save()
 
     from django.contrib.auth.models import Group, Permission, User
     
@@ -31,12 +31,27 @@ def run(purge):
         print 'Resetting site and auth data'
         purge_and_create_site_and_auth()
     
-    from tracker.models import *
+    from blog.models import BlogPost
+    BlogPost.objects.all().delete()
+    
+    create_blogposts()
+    
+    from tracker.models import City, Query
     City.objects.all().delete()
     Query.objects.all().delete()
     
     create_cities()
+
+def create_blogposts():
+    from blog.models import BlogPost
+    from django.contrib.auth.models import User
+    import datetime
     
+    user = User.objects.get(username='nick')
+    now = datetime.datetime.now()
+    BlogPost.objects.create(author=user, title='Test Post', post_date=now, is_draft=False, body='<p>This is a test post. Here is some HTML:</p><p><ol><li>One</li><li>Two</li></ol></p>')
+    BlogPost.objects.create(author=user, title='Draft Post', post_date=now+datetime.timedelta(hours=6), is_draft=True, body='This should not show up on the front page.')
+
 def create_cities():
     from tracker.models import City
     City.objects.create(name='Auckland, NZ', city_id=2193733)

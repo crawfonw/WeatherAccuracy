@@ -10,7 +10,6 @@ from models import City, Query
 from querier import current_weather_for
 
 def index(request):
-    print reverse('tracker-index')
     return render_to_response('tracker/index.html',
                               {'page_title': 'WeatherTracker',
                                'page_header': 'Home',

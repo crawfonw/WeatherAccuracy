@@ -14,10 +14,12 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-          {% url 'tracker-index' as index %}
+          {% url 'blog-index' as index %}
           {% url 'query-history' as history %}
           {% url 'latest-query-history' as latest %}
+          {% url 'blog-history' as archive %}
             <li class="{% active request index %}"><a href="{{ index }}"><span class="octicon octicon-globe"></span> Home</a></li>
+            <li class="{% active request archive %}"><a href="{{ archive }}"><span class="octicon octicon-file-zip"></span> News Archive</a></li>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="octicon octicon-history"></span> History <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">

@@ -1,0 +1,12 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+{% if post %}
+<h3>{{ post.title }}</h3> <h6>by {{ post.author.first_name }} on {{ post.post_date }}</h6>
+<p>
+{{ post.body|safe }}
+</p>
+{% else %}
+No gnus!
+{% endif %}
+{% endblock %}
