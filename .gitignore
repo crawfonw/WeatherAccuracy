@@ -8,3 +8,5 @@ WeatherAccuracy/WeatherAccuracy/settings.py
 WeatherAccuracy/db.sqlite3
 
 *.pyc
+
+*.prefs
