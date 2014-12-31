@@ -18,7 +18,7 @@ def index(request):
                                RequestContext(request))
 
 def latest_query(request):
-    cities = City.objects.all()
+    cities = City.objects.all().order_by('pk')
     return render_to_response('tracker/latest-query-history.html',
                               {'page_title': 'WeatherTracker | History',
                                'page_header': "Cities' Most Recent Queries",

@@ -61,6 +61,8 @@ def create_cities():
     City.objects.create(name='London, England; UK', city_id=2643743)
     City.objects.create(name='Louisville, KY; USA', city_id=4299276)
     City.objects.create(name='San Francisco, CA; USA', city_id=5391959)
+    City.objects.create(name='Ft. Myers Beach, FL; USA', city_id=4155996)
+    City.objects.create(name='Boston, MA; USA', city_id=4930956)
 
 if __name__ == '__main__':
     import argparse, os

@@ -1,5 +1,6 @@
 {% extends "navbar.html" %}
 {% block content %}
+{% if queries %}
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,4 +23,7 @@
   {% endfor %}
   </tbody>
 </table>
+{% else %}
+No queries yet!
+{% endif %}
 {% endblock %}
