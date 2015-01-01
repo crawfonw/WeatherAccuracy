@@ -7,6 +7,17 @@ class CityAdmin(FengShuiAdmin):
     list_display = ('name', 'city_id',)
     
 class QueryAdmin(FengShuiAdmin):
+    fieldsets = (
+                  ('General Information', {
+                          'fields': ('id', 'city', 'time_executed', 'query_type', 
+                                     'full_query_string', 'was_success', 'picked_up_by_processor'),
+                          }),
+                  ('Query Results', {
+                                     'classes': ('collapse', ),
+                                     'fields': ('raw_results', ),
+                                    }),
+                  )
+    
     list_display = ('city', 'time_executed', 'full_query_string', 'was_success',)
     list_filter = ('was_success',)
     

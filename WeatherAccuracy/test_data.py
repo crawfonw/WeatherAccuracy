@@ -32,14 +32,12 @@ def run(purge):
         purge_and_create_site_and_auth()
     
     from blog.models import BlogPost
-    BlogPost.objects.all().delete()
-    
-    create_blogposts()
+    #BlogPost.objects.all().delete()
+    #create_blogposts()
     
     from tracker.models import City, Query
     City.objects.all().delete()
     Query.objects.all().delete()
-    
     create_cities()
 
 def create_blogposts():

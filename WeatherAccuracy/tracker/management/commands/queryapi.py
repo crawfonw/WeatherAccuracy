@@ -29,12 +29,13 @@ class Command(BaseCommand):
                 for c in cities:
                     q_string, data = query_func_map[opt](c.city_id)
                     q = Query.objects.create(city=c, time_executed=timezone.now(), \
-                                             full_query_string=q_string, query_type=opt,)
+                                             full_query_string=q_string, query_type=opt, \
+                                             picked_up_by_processor=False)
                     if data:
-                        q.was_successful = True
+                        q.was_success = True
                         q.raw_results = data
                     else:
-                        q.was_successful = False
+                        q.was_success = False
                         q.raw_results = ''
                     q.save()
         self.stdout.write('Ran queries command')

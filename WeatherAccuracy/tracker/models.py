@@ -3,7 +3,6 @@ from jsonfield import JSONField
 
 class City(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    #query_string = models.CharField(max_length=100, required=False)
     city_id = models.IntegerField(help_text='City ID from openweathermap.')
     
     class Meta:
@@ -25,6 +24,7 @@ class Query(models.Model):
     full_query_string = models.CharField(max_length=500)
     raw_results = JSONField()
     was_success = models.NullBooleanField()
+    picked_up_by_processor = models.NullBooleanField(default=False)
     
     class Meta:
         ordering = ('-time_executed', 'city',)
