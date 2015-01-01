@@ -22,7 +22,11 @@
   		<td><code>{{ city.city_id }}</code></td>
   		<td>{% if q %}<a href="{% url 'query-lookup' q.pk %}">{{ q }}</a>{% else %}N/A{% endif %}</td>
   		{% if user.is_authenticated %}
-  		<td><a href="{% url 'new-weather-query' city.pk %}"><button type="button" class="btn btn-xs btn-primary">Current</button></a> <a href=""><button type="button" class="btn btn-xs btn-primary">Forecast</button></a></td>
+  		<td>
+  			<a href="{% url 'new-weather-query' 'C' city.pk %}"><button type="button" class="btn btn-xs btn-primary">Current</button></a>
+  			<a href="{% url 'new-weather-query' 'H' city.pk %}"><button type="button" class="btn btn-xs btn-primary">5-Day</button></a>
+  			<a href="{% url 'new-weather-query' 'D' city.pk %}"><button type="button" class="btn btn-xs btn-primary">16-Day</button></a>
+  		</td>
   		{% endif %}
  	</tr>
   {% endfor %}

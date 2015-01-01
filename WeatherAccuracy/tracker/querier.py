@@ -18,3 +18,8 @@ def five_day_weather_for(city_id):
 
 def sixteen_day_weather_for(city_id):
     return _query_api(SIXTEEN_DAY_FORECAST, city_id)
+
+query_func_map = {'C': current_weather_for,
+                  'D': sixteen_day_weather_for,
+                  'H': five_day_weather_for,
+                  }

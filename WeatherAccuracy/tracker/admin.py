@@ -25,6 +25,9 @@ class QueryAdmin(FengShuiAdmin):
         if obj:
             return [x.name for x in obj._meta.fields]
         return self.readonly_fields
+    
+    def has_add_permission(self, request):
+        return False
 
 admin.site.register(City, CityAdmin)
 admin.site.register(Query, QueryAdmin)

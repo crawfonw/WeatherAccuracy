@@ -2,13 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 
 from tracker.models import City, Query
-from tracker.querier import current_weather_for, five_day_weather_for, \
-                            sixteen_day_weather_for
-
-query_func_map = {'C': current_weather_for,
-                  'D': sixteen_day_weather_for,
-                  'H': five_day_weather_for,
-                  }
+from tracker.querier import query_func_map
 
 #1.7 and under
 class Command(BaseCommand):
