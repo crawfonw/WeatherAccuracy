@@ -18,8 +18,9 @@ class QueryAdmin(FengShuiAdmin):
                                     }),
                   )
     
-    list_display = ('city', 'time_executed', 'full_query_string', 'was_success',)
-    list_filter = ('was_success',)
+    list_display = ('city', 'time_executed', 'full_query_string', 
+                    'query_type', 'was_success',)
+    list_filter = ('query_type', 'was_success',)
     
     def get_readonly_fields(self, request, obj=None):
         if obj:
